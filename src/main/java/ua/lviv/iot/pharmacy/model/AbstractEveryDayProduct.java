@@ -1,0 +1,29 @@
+
+package ua.lviv.iot.pharmacy.model;
+
+public abstract class AbstractEveryDayProduct extends AbstractPharmacyProduct {
+  private int quantityInOnePackage;
+
+  public int getQuantityInOnePackage() {
+    return quantityInOnePackage;
+  }
+
+  public void setQuantityInOnePackage(int quantityInOnePackage) {
+    this.quantityInOnePackage = quantityInOnePackage;
+  }
+
+  public AbstractEveryDayProduct(int massInGrams, int shelfLifeInMonths, double priceInUAH, String nameOfProduct,
+      String producingCountry, String compositionOfProduct, String sideEffects, int quantityInOnePackage) {
+    super(massInGrams, shelfLifeInMonths, priceInUAH, nameOfProduct, producingCountry, compositionOfProduct,
+        sideEffects);
+    this.quantityInOnePackage = quantityInOnePackage;
+  }
+
+  public String getHeaders() {
+    return super.getHeaders() + ", quantity in one package";
+  }
+
+  public String toCSV() {
+    return super.toCSV() + "," + quantityInOnePackage;
+  }
+}
